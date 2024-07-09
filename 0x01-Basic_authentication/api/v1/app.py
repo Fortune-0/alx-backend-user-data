@@ -30,7 +30,8 @@ def Unauthorized(error) -> str:
 
 @app.errorhandler(403)
 def forbidden(error) -> str:
-    """ Forbidden
+    """ Invalid permission for
+    requested resource
     """
     return jsonify({"error": "Forbidden"}), 403
 
