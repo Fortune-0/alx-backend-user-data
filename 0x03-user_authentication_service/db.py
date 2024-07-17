@@ -8,6 +8,7 @@ from sqlalchemy.orm.session import Session
 
 from user import Base, User
 
+
 class DB:
     """DB class
     """
@@ -28,9 +29,9 @@ class DB:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self.__session
-    
-    def add_user(self, email : str, hashed_password : str) -> User:
-        """_summary_
+
+    def add_user(self, email: str, hashed_password: str) -> User:
+        """ Adds a new user to the database
 
         Args:
             email (str): _description_
