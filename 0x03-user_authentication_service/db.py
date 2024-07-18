@@ -44,6 +44,22 @@ class DB:
         self._session.commit()
         return new_user
 
+    # def find_user_by(self, **kwargs) -> User:
+    #     """Find a user by filtering with
+    #     arbitrary keyword arguments
+
+    #     Returns:
+    #         User: _description_
+    #     """
+    #     try:
+    #         user = self._session.query(User).filter_by(**kwargs).first()
+    #         if user:
+    #             return user
+    #         else:
+    #             raise NoResultFound("no user found.")
+    #     except InvalidRequestError:
+    #         raise InvalidRequestError("Invalid query arguments.")
+
     def find_user_by(self, **kwargs) -> User:
         """Find a user by filtering with
         arbitrary keyword arguments
@@ -51,11 +67,10 @@ class DB:
         Returns:
             User: _description_
         """
-        try:
-            user = self._session.query(User).filter_by(**kwargs).first()
-            if user:
-                return user
-            else:
-                raise NoResultFound("no user found.")
-        except InvalidRequestError:
-            raise InvalidRequestError("Invalid query arguments.")
+        if not kwargs:
+            raise InvalidRequestError
+
+        user = self._session.query(User).filter_by(**kwargs).first()
+        if not user:
+            raise NoResultFound
+        return user
