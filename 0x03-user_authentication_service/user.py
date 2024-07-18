@@ -15,7 +15,7 @@ class User(Base):
     Args:
         Base (_type_): _description_
     """
-    __tablename__ = 'user'
+    __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     name = Column(String)
     email = Column(String(250), nullable=False)
