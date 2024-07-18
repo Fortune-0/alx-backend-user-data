@@ -12,7 +12,7 @@ from uuid import uuid4
 from typing import Union
 
 
-def _hash_password(self, password: str) -> bytes:
+def _hash_password(password: str) -> bytes:
     """Hashes a password using bcrypt.
 
         Args:
@@ -25,3 +25,13 @@ def _hash_password(self, password: str) -> bytes:
     salt = bcrypt.gensalt()
     hashed_pass = bcrypt.hashpw(passwrd, salt)
     return hashed_pass
+
+
+class Auth:
+    """Auth class to interact with the authentication database.
+    """
+
+    def __init__(self):
+        """_summary_
+        """
+        self._db = DB()
