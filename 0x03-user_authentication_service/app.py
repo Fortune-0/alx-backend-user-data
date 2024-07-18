@@ -19,7 +19,7 @@ def index() -> str:
 
 
 @app.route('/users', methods=['post'])
-def users():
+def users() -> str:
     """Register a new user
     """
     email = request.form.get('email')
