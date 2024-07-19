@@ -18,13 +18,12 @@ def index() -> str:
     return jsonify({"message": "Bienvenue"})
 
 
-@app.route('/users', methods=['post'])
+@app.route('/users', methods=['POST'])
 def users() -> str:
     """Register a new user
     """
     email = request.form.get('email')
     password = request.form.get('password')
-
     # if not email or password:
     # #return jsonify({"message": "Email and password required"}), 400
 
