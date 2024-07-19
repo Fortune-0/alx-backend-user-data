@@ -18,20 +18,34 @@ def index() -> str:
     return jsonify({"message": "Bienvenue"})
 
 
+# @app.route('/users', methods=['POST'])
+# def users() -> str:
+#     """Register a new user
+#     """
+#     email = request.form.get('email')
+#     password = request.form.get('password')
+#     # if not email or password:
+#     # #return jsonify({"message": "Email and password required"}), 400
+
+#     try:
+#         user = AUTH.register_user(email, password)
+#         return jsonify({"email": user.email, "message": "User created"}), 201
+#     except Exception:
+#         return jsonify({"message": "email already registered"}), 400
 @app.route('/users', methods=['POST'])
 def users() -> str:
-    """Register a new user
+    """_summary_
     """
     email = request.form.get('email')
     password = request.form.get('password')
-    # if not email or password:
-    # #return jsonify({"message": "Email and password required"}), 400
 
+    # regsiter user if user does not exist
     try:
         user = AUTH.register_user(email, password)
-        return jsonify({"email": user.email, "message": "User created"})
+        return jsonify({"email": user.email, "message": "user created"})
     except Exception:
         return jsonify({"message": "email already registered"}), 400
+
 
 
 if __name__ == "__main__":
